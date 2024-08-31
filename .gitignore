@@ -1,3 +1,13 @@
 venv
 __pycache__
 mongo-flask
+.idea
+.vscode
+.env
+a.exe
+code.c
+code.exe
+helo.exe
+server.py.txt
+settings.py
+test.json
