@@ -1,0 +1,1 @@
+document.getElementById("profile").classList.add('active')

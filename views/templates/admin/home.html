@@ -1,0 +1,50 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static' ,filename='css/admin/home.css') }}">
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("home").classList.add('active');
+  });
+
+</script>
+{% endblock %}
+
+
+{% block main %}
+<div class="container">
+    <div class="tasks my-5 mx-auto">
+        <p class="info-title">Events Management</p>
+        <p class="info-text">You can perform full CURD operations on events from the church,
+            you can also create dynamic registrations form and reistered memebers details</p>
+    </div>
+    <div class="tasks my-5 mx-auto">
+        <p class="info-title">E-book Management</p>
+        <p class="info-text">You are allowed to upload/add e-book written by authors with <a href="#">right permisions</a>.
+            editing the book info and deleting oprations can also be performed.</p>
+    </div>
+    <div class="tasks my-5 mx-auto">
+        <p class="info-title">Audio Management</p>
+        <p class="info-text">You can also upload audio files, which contains gosple music, message, and inspirational content with <a href="#">right permisions</a>.
+            editing and deleting oprations can also be performed.</p>
+    </div>
+    {%if 'blogger' not in user["roles"]%}
+    <div class="tasks my-5 mx-auto">
+        <a href="/admin/profile" class="btn btn-primary blogger-reg">Register as a blogger...</a>
+    </div>
+    {% endif %}
+    <!-- <div class="card text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+      </div> -->
+</div>
+{% endblock %}

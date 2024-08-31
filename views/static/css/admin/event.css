@@ -1,0 +1,209 @@
+.addbtn{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+.addbtn i{
+    font-size: 5em;
+    color: green;
+}
+
+h1{
+    color: green;
+}
+
+.event-container{
+    display: flex;
+    place-content: center;
+    gap: 2rem 1rem;
+    flex-wrap: wrap;
+}
+
+.event-box{
+    max-width: 822px;
+    background-color: #fff;
+    padding: 3rem 2rem;
+    color: green;
+    min-height: 80vh;
+}
+
+.event-item{
+    width: 760px;
+    margin: auto;
+}
+.card-footer{
+    gap: 1.5rem;
+}
+
+.card-footer a.del{
+    color: rgb(107, 29, 0)
+}
+
+.card-footer a.edit{
+    color: rgb(87, 63, 5)
+}
+
+.card-footer .download{
+    color: rgb(0, 194, 0);
+}
+
+.input-group-text{
+    background-color: gold;
+}
+.input-group-text i{
+    color: #555;
+}
+
+.submit{
+    gap: 2rem;
+
+}
+
+.submit .btn{
+    background-color: green;
+    border-radius: 8px;
+    color: #fff;
+    width: 100%;
+}
+
+.submit .next{
+    background-color: #0044ff;
+}
+
+.submit .btn-outline{
+    border: 1px solid green;
+    background-color: transparent;
+    color: green;
+}
+
+
+.file-input-container {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* margin-top: 50px; */
+    border: 1px solid #e7e7e7;
+    font-size: 0.8em;
+}
+
+.custom-file-input {
+    display: none;
+}
+
+.custom-file-label {
+    /* display: inline-block; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding:0 0.7rem;
+    font-size: 1em;
+    /* padding: 10px 20px; */
+    background-color: #eaeaea;
+    color: #333;
+    cursor: pointer;
+    /* border-radius: 5px; */
+    /* font-size: 16px; */
+}
+
+.title{
+    color: green;
+}
+.subtitle{
+    color: rgb(0, 156, 0);
+    font-style: italic;
+}
+
+.file-name {
+    /* margin-top: 10px; */
+    /* font-size: 16px; */
+    color: #555;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-progress{
+    display: flex;
+    align-items: center;
+}
+
+.form-progress > .btn{
+    border-radius: 100%;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: #0044ff;
+    color: white;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-progress .join{
+    background-color: #0044ff;
+    width: 100%;
+    height: 5px;
+}
+
+.form-progress .first{
+}
+
+.progress-btn{
+    gap: 1rem;
+}
+
+.add-rmv-btn{
+    column-gap: 0.5rem;
+}
+
+.add-rmv-btn i{
+    color: #0044ff;
+    font-size: 1.2em;
+}
+.field-name, .field-name:focus, .field-name:hover{
+    border: none;
+    box-shadow: none;
+}
+
+.field-options{
+    width: 50%;
+}
+
+.field-options input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #333;
+}
+
+.option-add-rmv-btn{
+    gap: 0.5rem;
+}
+
+.date-time{
+    gap: 2rem;
+}
+
+p.theme{
+    font-size: 1.5em;
+}
+
+p.theme span{
+    font-weight: bold;
+}
+
+.edit-btns{
+    right: 10%;
+    bottom: 50%;
+    transform: translateY(100%);
+    gap: 2rem;
+}
+
+.edit-btns i{
+    font-size: 1.8em;
+    color: goldenrod;
+    text-shadow: 1px 1px 1px #000;
+    cursor: pointer;
+}

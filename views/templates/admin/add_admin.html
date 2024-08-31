@@ -1,0 +1,43 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/admin-edit.css') }}">
+{% endblock %}
+
+{% block main %}
+
+<div class="container form-container">
+    <div class="container form-box rounded border shadow">
+        <p class="info"> <marquee behavior="" direction=""> Password is generated automatcally as <code>`&lt;username&gt;123`</code></marquee></p>
+        <form action="" method="post">
+            {%  with messages = get_flashed_messages(with_categories=True) %}
+            {% for category, message in messages%}
+            {% if category == 'success'%}
+                <div class="alert alert-success flash" role="alert">
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="alert alert-danger p-1 flash" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
+        <div class="my-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username" required>
+        </div>
+
+        <div class="my-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="email" required>
+        </div>
+        
+        <div class="submit d-flex justify-content-between my-3">
+            <button type="submit" class="btn">Add admin user</button>
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

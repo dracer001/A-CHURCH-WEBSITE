@@ -1,0 +1,59 @@
+{% extends '/blog/base.html' %}
+
+{% block page_dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog/view.css') }}">
+
+    <script src="{{ url_for('static', filename='js/blog/view.js') }}" defer></script>
+{% endblock %}
+
+{% block main %}
+
+<div class="container my-5">
+    <p class="h1 text-center">{{blog['title']}}</p>
+    <div class="title-details d-flex justify-content-between my-3 align-items-center " >
+        
+        <div class="d-flex flex-wrap flex-sm-row flex-column">
+            <span class="blogger-full-name"> {{blogger['full-name']}} ~</span>
+            <a class="blogger-name" href="/blog/profile/{{blogger['_id']}}">@{{blogger['username']}}</a>
+
+        </div>
+        <div class="d-flex flex-wrap align-items-center flex-sm-row flex-column date-view ">
+            <span class="date">{{blog['post-date'] | format_datetime}}</span>
+            <span><i class="bi bi-eye-fill"></i> {{blog['views']}}120</span>
+        </div>
+
+    </div>
+    <div class="content">
+    <img src="{{ url_for('blog.blog_image_download', image_id=blog['image-id']  ) }}" alt="" class="rounded mx-auto d-block img-fluid mb-3">
+
+        {% for content in blog['content'] %}
+            {% if content['field-type'] == 'text' %}
+            <p class="textarea my-3">{{content['content']}}</p>
+            {% elif content['field-type'] == 'sub-header' %}
+            <p class="sub-header h3 text-center my-3">{{content['content']}}</p>      
+            {% elif content['field-type'] == 'image' %}
+            <img src="{{ url_for('blog.blog_image_download', image_id=content['content']  ) }}" alt="blog image" class="my-3">  
+            {% elif content['field-type'] == 'ul' %}
+            <ul class="list my-3">
+                {% for item in content['content'] %}
+                    <li>{{item}}</li>
+                {% endfor %}
+            </ul>
+            {% elif content['field-type'] == 'ol' %}
+            <ol class="list my-3">
+                {% for item in content['content'] %}
+                    <li>{{item}}</li>
+                {% endfor %}
+            </ol>
+            {% endif %}            
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
+
+{% block pageScript %}
+    <script>
+        document.getElementById("blog-view-page").classList.add("active");
+    </script>
+{% endblock %}

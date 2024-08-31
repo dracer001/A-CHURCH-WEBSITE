@@ -1,0 +1,47 @@
+{% extends 'admin/base.html' %}
+
+
+{% block dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/event.css') }}">
+    <script src="{{ url_for('static', filename='js/admin/event.js') }}" defer></script>
+{% endblock %}
+
+
+{% block main %}
+    <div class="container">
+        <div class="reg-form-container my-5">
+            <h1 class="text-center title">Event Registration Form</h1>
+            <p class="text-center subtitle">Create and design the form you need for the event</p>
+            <div class="event-box mx-auto">
+                <form action="" method="post" onsubmit="ArrangeForm();">
+                    <div class="form-box" id="form-box">
+                        <div class="form-item" id="form-model">
+                            <input type="text" class="field-name form-control" placeholder="field name" required>
+                            <select class="form-select" aria-label="Default select example" onchange="chooseForm(this)">
+                                <option value="text" selected>Choose the form field type</option>
+                                <option value="text">Short Text</option>
+                                <option value="email">Email</option>
+                                <option value="textarea">Long Text</option>
+                                <option value="checkbox">Options - select multiple</option>
+                                <option value="radio">Options - select one</option>
+                                <option value="number">Number</option>
+                                <option value="date">Date</option>
+                                <option value="time">Time</option>
+                            </select>
+                            <div class="field-options"></div>
+                            <div class="add-rmv-btn d-flex justify-content-end">
+                                <i class="bi bi-dash-circle rmv" onclick="rmvForm(this);"></i>
+                                <i class="bi bi-plus-circle add" onclick="addForm(this);"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="reg-form" id="reg-form">
+                    <div class="submit d-flex justify-content-center my-3 mt-5">
+                        <button type="submit" class="btn" onsubmit=>Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

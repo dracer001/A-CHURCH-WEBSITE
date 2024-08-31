@@ -1,0 +1,205 @@
+{% extends '/base.html' %}
+
+{% block dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/public/index.css') }}">
+    <script src="https://unpkg.com/wavesurfer.js@7"></script>
+    <script src="{{ url_for('static', filename='js/public/index.js') }}" defer></script>
+{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <img class="hero-img" src="{{ url_for('static', filename='media/images/hero-index.jpg')}}" alt="">
+    <div class="hero-content">
+        <p class="h1 hero-title mb-3">Welcome to University Baptist Church, Gidan-Kwano</p>
+        <p class="hero-text">Experience faith, fellowship, and community at Grace Community Church. Join us as we grow together in God's love. All are welcome!</p>
+        <button class="hero-btn btn btn-lg btn-bg">Learn more...</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <section class="event-container my-5 rounded shadow">
+        <!-- <div class="event-add rounded">
+            <img src="{{ url_for('static', filename='media/images/flyer.jpg')}}" alt="" class="rounded img-fluid">
+            <div class="timer position-absolute">
+                <time datetime=""><span>30h</span> <span>25m</span> <span>60s</span></time>
+            </div>
+            <button class="btn position-absolute btn-lg">Register Now</button>
+        </div> -->
+        <div class="join-us">
+            <img src="{{ url_for('static', filename='media/images/hero3.jpg')}}" class="rounded-start join-us-img" alt="...">
+            <div class="card-body">
+              <p class="card-text h2 display-6">Join us this wednesday as we glory in God's presence</p>
+              <p class="card-text details mt-3 mt-md-4">
+                <small class="mb-2"><i class="bi bi-clock-fill me-2"></i> 7:00pm</small>
+                <small class="mb-2"><i class="bi bi-calendar3 me-2"></i> July, 7<sub>th</sub>, 2024</small>
+                <small class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i> wuse 2 abuja, nigeria</small>
+              </p>
+            </div>
+        </div>
+    </section>
+    <section class="blog-post shadow rounded px-md-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class=" col-lg-6">
+              <img src="{{ url_for('blog.blog_image_download', image_id=blog['image-id']  ) }}" class="d-block mx-lg-auto img-fluid blog-img" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold lh-1 mb-3">{{blog['title']}}</h1>
+              {% for content in blog['content'] %}
+                {% if content['field-type'] == 'text' %}
+                  <p class="lead post-content">{{content['content']}}</p>        
+                {% endif %}
+              {% endfor %}
+              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button type="button" class="btn c-test btn-lg px-4 me-md-2">Read more</button>
+              </div>
+            </div>
+          </div>
+    </section>
+    <section class="row justify-content-center justify-content-md-between align-items-center img-illustration my-5 px-md-5 shadow">
+        <div class="illustration-text col-md-6">
+            <p class="h2 display-4">Join The Christian Community</p>
+            <p>Be among thounsands of belivers all over the world as we worship as one body in CHRIST JESUS</p>
+        </div>
+        <div class="img-rep-container col-md-5 col-12 col-sm-8">
+            <div class="rep-item up">
+                <img src="{{ url_for('static', filename='media/icons/social-justice.png') }}" alt="">
+                <span>Community</span>
+            </div>
+            <div class="rep-item down">
+                <img src="{{ url_for('static', filename='media/icons/social-justice.png') }}" alt="">
+                <span>Love</span>
+            </div>
+            <div class="rep-item left">
+                <img src="{{ url_for('static', filename='media/icons/social-justice.png') }}" alt="">
+                <span>worship</span>
+            </div>
+            <div class="rep-item right">
+                <img src="{{ url_for('static', filename='media/icons/social-justice.png') }}" alt="">
+                <span>Family</span>
+            </div>
+        </div>
+    </section>
+    <section class="audio-media">
+        <div class="bg-dark text-secondary px-4 py-5 text-center px-sm-5 px-lg-0">
+            <div class="py-5">
+              <p class="display-5 fw-bold text-white h1 mb-3">Listen to our message recoding</p>
+              <div class="col-lg-8 mx-auto ">
+                <div class="audio-container">
+                    <div class="audio-details text-start">
+                        <p class="audio-title h3">{{audio['title']}}</p>
+                        <p class="audio-artist">{{audio['artist']}}</p>
+                        <div class="audio-player d-flex align-items-center">
+                            <div class="play-icon">
+                                <img class="img-fluid" src="{{ url_for('admin.download_audio_route', audio_id=audio['image_id']) if audio['image_id'] else ''}}" alt="">
+                                <input type="hidden" name="audio-file_id" value="{{ audio['file_id'] }}" class="audio-file_id" id="audio-file-id">        
+                                <i class="bi bi-play-fill play-btn"></i>
+                            </div>
+                            <div class="audio-body ms-2" id="wavesurfer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" mt-5 d-grid gap-2 d-sm-flex justify-content-sm-center">
+                  <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">View More Messages</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+    <section class="ebook border shadow rounded-3 my-5">
+        <div class="row align-items-center g-5 justify-content-center justify-content-lg-between px-lg-5">
+          <div class="col-lg-5 col-md-10">
+            <img class="img-fluid" src="{{ url_for('admin.download_ebook_route', ebook_id=ebook['image_id']) }}" alt="">
+          </div>
+            <div class="col-lg-6">
+              <h1 class="display-4 fw-bold lh-1">{{ebook['title']}}</h1>
+              <p class="small text-muted">{{ ebook['author']}}</p>
+              <p class="lead">{{ebook['summary']}}</p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                <a href="{{ url_for('admin.download_ebook_route', ebook_id=ebook['file_id'])}}" class="btn c-test btn-lg px-4 me-md-2 fw-bold">Download</a>
+                <a href="/e-books" type="button" class="btn btn-outline-secondary btn-lg px-4">Visit e-Library</a>
+              </div>
+            </div>
+
+          </div>
+    </section>
+    <section class="testimonies shadow border rounded px-4 py-5 px-md-5">
+        <h1 class="text-center mb-4">Uplift you faith with Testimonies</h1>
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-4">
+              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+      
+              <h2 class="">Heading</h2>
+              <p class="">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+      
+              <h2>Heading</h2>
+              <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+      
+              <h2>Heading</h2>
+              <p>And lastly this, the third column of representative placeholder content.</p>
+            </div><!-- /.col-lg-4 -->
+          </div>
+    </section>
+    <section class="request-form border my-5 p-4 p-lg-5 shadow-lg rounded-3">
+        <form>
+            <h2 class="text-center my-3">Send your prayer request</h2>
+            <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="name">
+                </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail3">
+              </div>
+            </div>
+            <div class="row mb-3">
+                <label for="prayer-request" class="col-sm-2 col-form-label">Prayer Request</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="prayer-request" rows="3"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn c-test">Send</button>
+          </form>
+    </section>
+    <section class="partnership shadow rounded border mb-5">
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold">Partner With Us</h1>
+            <div class="col-lg-6 mx-auto">
+              <p class="lead mb-4">Be Part of the advancement of Gods kingdom as you partner with us. With variuse ministries under UBC you can choose one to be commited to</p>
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn c-test btn-lg px-4 gap-3">Partner</button>
+              </div>
+            </div>
+          </div>
+    </section>
+</div>
+
+
+
+<!-- <div class="container music shadow">
+  <p>Artist: Nefex</p>
+  <h1>Title: Nefex</h1>
+  <div class="track">
+    <i class="bi bi-play-fill play-btn"></i>
+    <div></div>
+  </div>
+</div> -->
+{% endblock %}
+
+
+{% block pageScript %}
+    <script>
+      document.getElementById('home').classList.add("active")
+    </script>  
+{% endblock %}

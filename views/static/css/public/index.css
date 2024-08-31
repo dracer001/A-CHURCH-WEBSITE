@@ -1,0 +1,398 @@
+
+header{
+    position: relative;
+    height: 100vh;
+}
+
+.logo-text{
+  color: #fff;
+}
+
+nav.navbar{
+    position: relative;
+    z-index: 2;
+    background: transparent !important;
+ }
+
+.nav-link{
+    color: #ced4da !important;
+ }
+ .nav-link:hover{
+    color: #fff !important;
+ }
+.nav-link.active{
+    color: #fff !important;
+}
+.btn-outline{
+    color: #2f6690 !important;
+    border-color: #2f6690;
+}
+
+.btn-outline:hover{
+    color: #fff !important;
+    border-color: #2f6690;
+    background-color: #2f6690;
+}
+
+.hero{
+    /* height: 60vh; */
+ }
+
+ .hero::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.522);
+    z-index: 1;
+ }
+ .hero-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    object-fit: cover;
+    filter: blur(1px);
+    z-index: 0;
+ }
+
+ .hero-content{
+    position: absolute;
+    left: 50%;
+    /* margin-left: 20px; */
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    max-width: 700px;
+    color: #fff;
+    z-index: 2;
+    /* font-size: 1.5em; */
+
+ }
+
+ .hero-title{
+    font-family: "Open Sans", sans-serif;
+ }
+ .hero-h1{
+    /* font-size: 2.5em; */
+ }
+
+.hero-text{
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 1.2rem;
+}
+
+.hero-btn{
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+}
+
+section{
+    padding: 2rem 1rem;
+}
+
+.event-container{
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2rem;
+}
+
+.event-add{
+    position: relative;
+    padding: 0;
+}
+
+.event-add::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.522);
+    z-index: 1;
+}
+
+.event-add .timer{
+    position: absolute;
+    top: -5px;
+    left: 0px;
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: #dee2e6;
+    background-color: #064855;
+    border-radius: 5px 5px 0 0;
+    z-index: 2;
+}
+
+.timer span{
+    padding: 0.5rem 1rem;
+}
+
+.timer span:nth-child(1), .timer span:nth-child(2){
+    border-right: 1px solid white;
+
+}
+
+.event-add .btn{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.join-us{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+
+}
+
+.join-us .card-text{
+    font-family: "Open Sans", sans-serif;
+}
+
+.join-us .card-text.details small{
+    display: block;
+    color: #333;
+    font-weight: bold
+}
+
+.join-us .card-text.details i{
+    color: #064855;
+}
+
+.join-us-img{
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+}
+
+.post-content{
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-img{
+    max-height: 500px;
+    object-fit: cover;
+    width: 100%;
+}
+.illustration-text >p{
+    font-family: "Open Sans", sans-serif;
+}
+
+.img-illustration{
+}
+
+.img-rep-container{
+    position: relative;
+    border: 1px solid blueviolet;
+    height: 400px;
+    border-radius: 50%;
+    padding: 2rem;
+}
+
+.rep-item{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.rep-item.up{
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rep-item.down{
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rep-item.left{
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.rep-item.right{
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.rep-item img{
+    width: 30px;
+    
+}
+
+.audio-player{
+}
+
+.play-icon{
+    position: relative;
+    background-color: #0e6d80;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+.play-icon::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.445);
+    border-radius: 50%;
+}
+.play-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.play-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3em;
+}
+
+.audio-body{
+    flex-grow: 1;
+}
+
+.audio-detail p{
+    padding: 0;
+    margin: 0;
+}
+.audio-detail .title{
+    font-weight: bold;
+}
+.audio-detail .artist{
+    font-size: 0.8em;
+    color: #555;
+}
+
+
+.request-form form{
+    margin: auto;
+    max-width: 850px;
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-dark .navbar-nav .nav-item .nav-link{
+        color: #333;
+    }
+    .event-container{
+        grid-template-columns: auto;
+        gap: 2rem;
+    }
+    .join-us .card-text.h3{
+        font-size: 1.5em;
+    }
+    
+    .blog-post > .row{
+        justify-content: center;
+    }
+
+    .img-rep-container{
+        height: 350px;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .hero-content{
+        width: 100%;
+        padding: 0 5rem;
+     }
+     .hero-title{
+        font-size: 1.3em;
+     }
+    
+    .hero-text{
+        font-size: 0.9rem;
+    }
+
+    .join-us{
+        flex-direction: column;  
+    }
+
+    .join-us-img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .illustration-text{
+        text-align: center;
+    }
+    .img-rep-container{
+        height: 300px;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .hero-content{
+        width: 100%;
+        padding: 0 2rem;
+     }
+     .img-rep-container{
+        height: 270px;
+    }
+
+    .play-icon{
+        height: 100px;
+        width: 100px;
+    }
+    .play-btn{
+        font-size: 2.5em;
+    }
+
+}
+
+
+.c-test-outline{
+    background-color: #064855;
+    border-color: #064855;
+    color: #fff;
+}
+
+.partnership{
+    background-color: #064855;
+    color: #fff;
+}
+
+.partnership .c-test{
+    background-color: #fff;
+    color: #064855;
+}
+
+
+/* AUDIO FILE */
+/* .music{
+    width: 90%;
+    background-color: #ced4da;
+    margin: auto;
+
+}
+.track{
+    display: flex;
+    align-items: center;
+}
+
+.track i{
+    color: rgb(241, 5, 44);
+} */

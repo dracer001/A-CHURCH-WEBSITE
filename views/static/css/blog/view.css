@@ -1,0 +1,32 @@
+nav.navbar{
+    background: #fefefe !important;
+ }
+body{ background-color: rgba(222, 184, 135, 0.2);
+}
+.date-view{
+    column-gap: 1.2rem
+}
+
+.bi-eye-fill{
+    color: #2f6690;
+}
+
+.blogger-name{
+    color: #2f6690
+}
+
+.textarea{
+    color: #444;
+}
+
+.sub-header{
+    color: #222;
+}
+
+.list li{
+    color: #333;
+}
+
+.blogger-full-name, .date{
+    color: #555;
+}

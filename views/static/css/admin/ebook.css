@@ -1,0 +1,108 @@
+.addbtn{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+.addbtn i{
+    font-size: 5em;
+    color: green;
+}
+
+.ebook-container{
+    display: flex;
+    place-content: center;
+    gap: 2rem 1rem;
+    flex-wrap: wrap;
+}
+
+.ebook-box{
+    max-width: 822px;
+    background-color: #fff;
+    padding: 3rem 2rem;
+    color: green;
+}
+
+.ebook-item{
+    width: 760px;
+    margin: auto;
+}
+.card-footer{
+    gap: 1.5rem;
+}
+
+.card-footer a.del{
+    color: rgb(107, 29, 0)
+}
+
+.card-footer a.edit{
+    color: rgb(87, 63, 5)
+}
+
+.card-footer .download{
+    color: rgb(0, 194, 0);
+}
+
+.input-group-text{
+    background-color: gold;
+}
+.input-group-text i{
+    color: #555;
+}
+
+.submit .btn{
+    background-color: green;
+    border-radius: 8px;
+    color: #fff;
+    width: 100%;
+
+}
+
+.submit .btn-outline{
+    border: 1px solid green;
+    background-color: transparent;
+    color: green;
+}
+
+h1{
+    color: green;
+}
+
+.file-input-container {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* margin-top: 50px; */
+    border: 1px solid #e7e7e7;
+    font-size: 0.8em;
+}
+
+.custom-file-input {
+    display: none;
+}
+
+.custom-file-label {
+    /* display: inline-block; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding:0 0.7rem;
+    font-size: 1em;
+    /* padding: 10px 20px; */
+    background-color: #eaeaea;
+    color: #333;
+    cursor: pointer;
+    /* border-radius: 5px; */
+    /* font-size: 16px; */
+}
+
+
+.file-name {
+    /* margin-top: 10px; */
+    /* font-size: 16px; */
+    color: #555;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

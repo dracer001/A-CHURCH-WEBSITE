@@ -1,0 +1,49 @@
+nav.navbar{
+    background: rgba(0, 0, 0, 0.03) !important;
+ }
+ nav.navbar{
+    background: #fefefe !important;
+ }
+body{ background-color: rgba(218, 200, 178, 0.155);
+}
+
+ .btn-outline{
+    color: #2f6690 !important;
+    border-color: #2f6690;
+ }
+ 
+ .btn-outline:hover{
+    color: #fff !important;
+    border-color: #2f6690;
+    background-color: #2f6690;
+ }
+ 
+.btn-main-alt{
+    color: #fff;
+    border-color: #2f6690;
+    background-color: #2f6690;
+}
+
+ .blogger-nav-container{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    background-color: #fefefe;
+    z-index: 1024;
+ }
+
+.action-btns{
+    gap: 1.5rem;
+}
+
+.blogger-nav-container .nav-link{
+    font-size: 0.9em;
+}
+
+.blogger-nav-container{
+   z-index: 950;
+}
+.nav-item .dropdown-menu{
+   z-index: 2000;
+   position: relative;
+}

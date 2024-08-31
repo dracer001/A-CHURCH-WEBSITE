@@ -1,0 +1,88 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/event.css') }}">
+{% endblock %}
+
+
+{% block main %}
+<div class="container event-container">
+    <div class="container event-box rounded border shadow">
+        <h2 class="my-3 text-center">Upload Event File</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="my-3">
+                <label for="flyer" class="form-label">Event Flyer</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-file-earmark-image"></i></span>
+                    <input type="file" accept="image/*" class="form-control" name="flyer" id="flyer" required>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label for="title" class="form-label">Theme/Name</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                    <input type="text" class="form-control" name="title" id="title" required>
+                </div>
+            </div>
+
+            <div class="date-tiime my-3 row row-cols-2">
+                <div class="">
+                    <label for="date" class="form-label">Date</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar-month"></i></span>
+                        <input type="date" class="form-control" name="date" id="date" required>
+                    </div>
+                </div>
+
+                <div class="">
+                    <label for="time" class="form-label">Time</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-clock-history"></i></span>
+                        <input type="time" class="form-control" name="time" id="time" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label for="location" class="form-label">Location</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                    <input type="text" class="form-control" name="location" id="location" required>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label for="organizers" class="form-label">Organizers</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-people-fill"></i></span>
+                    <input type="text" class="form-control" name="organizers" id="organizers" required>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label for="event-info" class="form-label">Event Info</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-chat-square-quote"></i></span>
+                    <textarea class="form-control" aria-label="With textarea" name="event-info"></textarea>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label for="contact-info" class="form-label">Contact Info</label>
+                <span class="info"><small>Seperate, contact infos with ','</small></span>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-chat-square-quote"></i></span>
+                    <input class="form-control" name="contact-info" value="UBCMX@gmail.com">
+                </div>
+            </div>
+            <div class="submit d-flex justify-content-center mt-5">
+                <button type="submit" class="btn" formaction="{{url_for('admin.add_event_route')}}">Submit</button>
+                <button type="submit" class="btn next" formaction="{{url_for('admin.add_event_route', action_page='next')}}">Procced to registration form <i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

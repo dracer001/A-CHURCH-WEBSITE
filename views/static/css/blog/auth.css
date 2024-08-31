@@ -1,0 +1,25 @@
+
+.auth-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.auth-title {
+    text-align: center;
+    color: gold;
+    /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.603); */
+}
+
+.input-group-text{
+    background-color: #064855;
+}
+.input-group-text i{
+    color: gold
+}
+.register-btn{
+    color: goldenrod;
+}

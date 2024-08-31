@@ -1,0 +1,117 @@
+{% extends '/blog/base.html' %}
+
+{% block page_dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog/home.css') }}">
+    <script src="{{ url_for('static', filename='js/blog/home.js') }}" defer></script>
+{% endblock %}
+
+{% block hero %}
+    <div class="hero">
+        <img src="{{ url_for('static', filename='media/images/hero4.jpg') }}" class="hero-img">
+        <div class="hero-content">
+            <p class="hero-title display-4">Want to inspire others?</p>
+            {% if user %}
+            <a href="/blog/create" class="btn c-test btn-lg h2">Create a blog now</a>
+            {% else %}
+            <a href="/blog/register" class="btn c-test btn-lg h2">Register as a blogger</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block main %}
+{% if not blogs %}
+  <div class="container my-5">
+    <h2 class="text-center display-4">Opps! Sorry no blogs post avalilable</h2>
+    {% if user %}
+      <p class="text-center">
+        you can <a href="create"> create your blog post now</a>
+      </p>
+    {% endif %}
+  </div>
+
+{% else %}
+  <div class="query px-3 px-lg-5 py-3 sticky-top">
+    <form action="" class="d-flex align-items-center justify-content-end sort-form">
+        <div class="order">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="order" {{'checked' if order=='on' else ''}}>
+              <label class="form-check-label" for="flexSwitchCheckChecked"><i class="bi bi-arrow-down-up"></i></label>
+            </div>
+            
+        </div>
+        <div class="sort d-flex align-items-center">
+            <select class="form-select form-select-sm" id="query-field-select" name="field">
+                <option value="datetime" {{'selected' if sort=='datetime' else ''}}>datetime</option>
+                <option value="a-z" {{'selected' if sort=='a-z' else ''}}>A-Z</option>
+                <option value="most read" {{'selected' if sort=='most read' else ''}}>most read</option>
+            </select>
+        </div>
+        <div class="search d-flex">
+            <input value="{{query}}" class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" id="query-field" name="query">
+            <button class="btn btn-sm btn-outline" type="submit" id="search-btn" name="search" value="true">Search</button>
+        </div>
+        <input type="hidden" name="id" value="{{id}}">
+      </form>
+  </div>
+  <div class="container my-5">
+      <div class="row row-cols-1 row-cols-xl-3 row-cols-md-2 mb-2 g-4 gy-sm-5 blog-container">
+        {% for blog in blogs %}
+        <div class="col blog-box">
+          <div class="card h-100">
+            <div class="row g-0">
+              <div class="col-sm-4">
+                <img src="{{ url_for('blog.blog_image_download', image_id=blog['image-id']  ) }}" class="img-fluid rounded-start blog-img" alt="...">
+              </div>
+              <div class="col-sm-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{blog['title']}}</h5>
+                  <p class="card-text"><small class="text-muted">{{blog['post-date'] | format_datetime}}</small></p>
+                  <p class="card-text blog-content">{{blog['content'][0]['content']}}</p>
+                  <!-- <a href="view/{{blog['_id']}}" class="btn btn-sm btn-outline">Continue reading</a> -->
+                  <a href="view/{{blog['_id']}}" class="blog-link">Continue reading</a>
+                  <div class="user-action-btns d-flex mt-2">
+                    {% if blog['blogger'] == user['_id'] %}
+                    <a href="edit/{{blog['_id']}}" class="edit-blog btn btn-sm btn-outline-info">Edit</a>
+                    <a href="view/{{blog['_id']}}" class="ms-3 delete-blog btn btn-sm btn-outline-danger">Delete</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary">World</strong>
+              <h3 class="mb-0">{{blog['title']}}</h3>
+              <div class="mb-1 text-muted">{{blog['post-date']}}</div>
+              {% for content in blog['content'] %}
+                {% if content['field-type'] == 'text' %}
+                  <p class="card-text mb-auto blog-content">{{content['content']}}</p>        
+                {% endif %}
+              {% endfor %}
+
+              <a href="view/{{blog['_id']}}" class="stretched-link">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <img  class="bd-placeholder-img" src="{{ url_for('blog.blog_image_download', image_id=blog['image-id']  ) }}" alt="blog image" width="200" height="100%" style="object-fit: cover;">
+            </div>
+          </div>
+        </div> -->
+        {% endfor %}
+        </div>
+  </div>
+{% endif %}
+{% endblock %}
+
+
+{% block pageScript %}
+<script>
+    document.getElementById('{{id}}').classList.add('active')
+</script>
+    
+{% endblock %}

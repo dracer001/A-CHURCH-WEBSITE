@@ -1,0 +1,92 @@
+{% extends 'admin/base.html' %}
+
+
+{% block dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/event.css') }}">
+    <script src="{{ url_for('static', filename='js/admin/event.js') }}" defer></script>
+{% endblock %}
+
+
+{% block main %}
+    <div class="container">
+        <div class="reg-form-container my-5">
+            <h1 class="text-center title">Event Registration Form</h1>
+            <p class="text-center subtitle">Create and design the form you need for the event</p>
+            <div class="event-box mx-auto">
+                <form action="" method="post" onsubmit="ArrangeForm();">
+                    <div class="form-box" id="form-box">
+                        {% if form %}
+                        {% for field in form['form'] %}
+                        <div class="form-item">
+                            <input type="text" class="field-name form-control" placeholder="field name" value="{{field['field_name']}}" required>
+                            <select class="form-select" aria-label="Default select example" onchange="chooseForm(this)">
+                                <option value="text">Choose the form field type</option>
+                                <option value="text" {{'selected' if field['field_type'] == 'text' else ''}}>Short Text</option>
+                                <option value="email" {{'selected' if field['field_type'] == 'email' else ''}}>Email</option>
+                                <option value="textarea" {{'selected' if field['field_type'] == 'textarea' else ''}}>Long Text</option>
+                                <option value="checkbox" {{'selected' if field['field_type'] == 'checkbox' else ''}}>Options - select multiple</option>
+                                <option value="radio" {{'selected' if field['field_type'] == 'radio' else ''}}>Options - select one</option>
+                                <option value="number" {{'selected' if field['field_type'] == 'number' else ''}}>Number</option>
+                                <option value="date" {{'selected' if field['field_type'] == 'date' else ''}}>Date</option>
+                                <option value="time" {{'selected' if field['field_type'] == 'time' else ''}}>Time</option>
+                            </select>
+                            <div class="field-options">
+
+                            {% if "options" in field %}
+
+                            <input value="{{','.join(field['options'])}}" type="hidden" id="{{field['field_name']}}-option" >
+                                <script>  
+                                    let el = document.getElementById("{{field['field_name']}}-option");
+                                    let fieldOptionContainer = el.parentNode;
+                                    document.addEventListener("DOMContentLoaded", ()=>{
+                                            setOptionDB(el, el.value)
+                                    })
+                                    //     const selcectOption = new AddOptions(fieldOptionContainer); 
+
+                                </script>
+                            {% endif %}
+                            </div>
+
+                            <div class="add-rmv-btn d-flex justify-content-end">
+                                <i class="bi bi-dash-circle rmv" onclick="rmvForm(this);"></i>
+                                <i class="bi bi-plus-circle add" onclick="addForm(this);"></i>
+                            </div>     
+                        </div>  
+                        {% endfor %}
+                        {% endif %}
+
+                            
+                        <div class="form-item" id="form-model">
+                            <input type="text" class="field-name form-control" placeholder="field name" required>
+                            <select class="form-select" aria-label="Default select example" onchange="chooseForm(this)">
+                                <option value="text">Choose the form field type</option>
+                                <option value="text">Short Text</option>
+                                <option value="email">Email</option>
+                                <option value="textarea">Long Text</option>
+                                <option value="checkbox">Options - select multiple</option>
+                                <option value="radio">Options - select one</option>
+                                <option value="number">Number</option>
+                                <option value="date">Date</option>
+                                <option value="time">Time</option>
+                            </select>
+                            <div class="field-options"></div>
+                            <div class="add-rmv-btn d-flex justify-content-end">
+                                <i class="bi bi-dash-circle rmv" onclick="rmvForm(this);"></i>
+                                <i class="bi bi-plus-circle add" onclick="addForm(this);"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="reg-form" id="reg-form">
+                    <input type="hidden" name="form_id" value="{{form['_id']}}">
+                    <div class="submit d-flex justify-content-center my-3 mt-5">
+                        <button type="submit" class="btn">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    min-height: 100vh;
+}
+.profile-box{
+    max-width: 822px;
+    background-color: #fff;
+    padding: 3rem 2rem;
+    color: green;
+}
+
+.profile-box form > div{
+    margin-bottom: 3rem !important;
+}
+.input-group-text{
+    background-color: gold;
+}
+.input-group-text i{
+    color: #555;
+}
+
+.submit{
+}
+.submit .btn{
+    background-color: green;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.submit .btn-outline{
+    border: 1px solid green;
+    background-color: transparent;
+    color: green;
+}

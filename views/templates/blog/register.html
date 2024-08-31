@@ -1,0 +1,59 @@
+{% extends "/blog/base.html" %}
+
+{% block page_dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/blog/auth.css') }}">
+    <script src="{{ url_for('static', filename='/js/blog/auth.js') }}" defer></script>
+{% endblock %}
+
+{% block main %}
+<div class="container my-5">
+    <div class="auth-container p-4 p-lg-5 shadow-lg border">
+        <h2 class="auth-title mb-3">Register as a blogger</h2>
+        <form method="post" id="registration-form">
+    
+            <div class="form-group mb-3">
+                <label for="ful-name">Full Name</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person-vcard-fill"></i></span>
+                    <input type="text" class="form-control" placeholder="Jon Doe" autocomplete="on" name="full-name" required>
+                </div>
+            </div>
+    
+            <div class="form-group mb-3">
+                <label for="username">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                    <input type="text" class="form-control" placeholder="jondoe123" autocomplete="on" name="username" required>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" class="form-control" placeholder="email@example.com" autocomplete="on" name="email" required>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                    <input type="password" id="password" class="form-control" placeholder="" autocomplete="off" name="password" required>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="c-password">Confirm Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-key"></i></span>
+                    <input type="password" id="c-password" class="form-control" placeholder="" autocomplete="off" aria-describedby="invalid-feedback-password" required>
+                </div>
+                <div id="invalid-feedback-password" class="invalid-feedback">
+                    Password does not match
+                  </div>
+            </div>
+            <button type="submit" class="btn c-test mt-4 mb-3"><i class="fas fa-user-plus"></i> Register</button>
+            <p>already have an account?<a href="sign-in" class="register-btn"> login</a></p>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

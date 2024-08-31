@@ -1,0 +1,165 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/event.css') }}">
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .event-details, .registration-form {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: .5rem;
+        padding: 20px;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .event-title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #28a745;
+        margin-bottom: .5rem;
+    }
+    .event-info {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+    }
+    .event-info i {
+        margin-right: 10px;
+        color: #28a745;
+    }
+    .event-info p {
+        margin: 0;
+    }
+    .registration-form h3 {
+        color: #28a745;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    .btn-group .btn {
+        margin-right: 5px;
+    }
+    .btn-group .btn:last-child {
+        margin-right: 0;
+    }
+    .btn-action {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+    .btn-action .btn {
+        margin-left: 5px;
+    }
+
+    .add-form{
+        width: 100%;
+        background-color: green;
+        color: white;
+    }
+</style>
+<script src="{{ url_for('static', filename='js/admin/event.js') }}" defer></script>
+
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+    <h1 class="text-center my-5">Event Details</h1>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="event-details">
+                <img src="{{ url_for('admin.download_event_route', event_id=event['flyer_id'])}}" alt="Event flyer image" class="img-fluid rounded mb-3">
+                <h2 class="event-title">Music Concert</h2>
+                <div class="event-info">
+                    <i class="bi bi-bookmark"></i>
+                    <p>Theme: {{event["title"]}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-calendar-event"></i>
+                    <p>Date: {{event["date"] | format_date}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-clock"></i>
+                    <p>Time: {{event["time"]}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-geo-alt"></i>
+                    <p>Location: {{event["location"]}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-people"></i>
+                    <p>Organizers: {{event["organizers"]}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-telephone"></i>
+                    <p>Contact Info: contact@xyzevents.com, (123) 456-7890</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-info-circle"></i>
+                    <p>About the Event: {{event["event_info"]}}</p>
+                </div>
+                <div class="btn-action">
+                    <a href="/admin/event/edit/{{event['_id']}}" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
+                    <a class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            {% if form %}
+                <div class="registration-form">
+                    <h3 class="text-center mb-4">Register for the Event</h3>
+                    <form action="/admin/event/register/", method="post">
+                        {% for field in form['form'] %}
+                        <div class="form-group mb-3">
+                            <label for="{{field['field_name']}}">{{field["field_name"]}}</label>
+                            {% if field['field_type'] == 'textarea' %}
+                            <textarea class="form-control" name="{{field['field_name']}}" rows="3" required></textarea>
+            
+                            {% elif field['field_type'] == 'radio'%}
+                                <div class="my-3">
+                                {% for option in field['options'] %}
+                                <input type="{{field['field_type']}}" class="form-check-input" name="{{field['field_name']}}" id="{{field['field_name']}}" value="{{option}}">      
+                                <label for="{{field['field_name']}}">{{option}}</label>
+                                {% endfor %}
+                                </div>
+                            {% elif field['field_type'] == 'checkbox'  %}
+                                <div class="my-3">
+                                {% for option in field['options'] %}
+                                    <input type="{{field['field_type']}}" class="form-check-input" name="{{field['field_name']}}-{{option}}" id="{{field['field_name']}}" value="{{option}}">      
+                                    <label for="{{field['field_name']}}">{{option}}</label>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                            <input type="{{field['field_type']}}" class="form-control" name="{{field['field_name']}}" id="{{field['field_name']}}" required>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <input type="hidden" name="form_id" value="{{form['_id']}}">
+                        <input type="hidden" name="event_id" value="{{event['_id']}}">
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <div class="btn-action">
+                            <a href="/admin//event-reg/edit/{{event['_id']}}" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
+                            <a href="/admin/event-reg/delete/{{form['_id']}}/{{event['_id']}}" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
+                        </div>
+            
+                    </form>
+
+                </div>
+            {% else %}
+                <h2 class="text-center"> This event Has no form</h2>
+                <a href="/admin/event-reg/add/{{event['_id']}}" class="add-form my-5 text-center btn">Add</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/audio.css') }}">
+{% endblock %}
+
+
+{% block main %}
+<div class="container audio-container">
+    <div class="container audio-box rounded border shadow">
+        <h2 class="my-3 text-center">Upload Audio File</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+        <div class="my-3">
+            <label for="audio-file" class="form-label">Audio File</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-file-earmark-music-fill"></i></span>
+                <input type="file" accept="audio/*" class="form-control" name="audio-file" id="audio-file" required>
+              </div>
+        </div>
+        
+        <div class="my-3">
+            <label for="audio-image" class="form-label">Audio Image</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-file-earmark-image"></i></span>
+                <input type="file" accept="image/*" class="form-control" name="audio-image" id="audio-image">
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="audio-title" class="form-label">Audio Title</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                <input type="text" class="form-control" name="audio-title" id="audio-title" required>
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="audio-artist" class="form-label">Artist(s)</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" class="form-control" name="audio-artist" id="audio-artist">
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="audio-tags" class="form-label">Audio Tags</label>
+            <span class="info"> <small>Please seperate tags with a comma '<strong>,</strong>'</small></span>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-tags-fill"></i></span>
+                <input type="text" class="form-control" name="audio-tags" id="audio-tags">
+              </div>
+        </div>
+        
+        <div class="submit d-flex justify-content-center my-3">
+            <button type="submit" class="btn">Upload</button>
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,148 @@
+nav.navbar{
+   background: rgba(0, 0, 0, 0.03) !important;
+}
+
+
+.btn-outline{
+   color: #2f6690 !important;
+   border-color: #2f6690;
+}
+
+.btn-outline:hover{
+   color: #fff !important;
+   border-color: #2f6690;
+   background-color: #2f6690;
+}
+
+.hero{
+    position: relative;
+    height: 60vh;
+ }
+ .hero::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.522);
+    z-index: 1;
+ }
+ .hero-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    object-fit: cover;
+    z-index: 0;
+ }
+
+ .hero-content{
+    position: absolute;
+    left: 10%;
+    margin-right: 20px;
+    bottom: 50%;
+    transform: translateY(50%);
+    max-width: 350px;
+    color: #fff;
+    z-index: 2;
+ }
+
+ .query{
+   background-color: #212529 ;
+   /* margin-top: -1rem; */
+}
+
+
+ form.sort-form{
+    gap: 1rem;
+ }
+ .order i{
+   color: #2f6690;
+   color: #4ba4e9;
+
+ }
+
+ .thumbnail-shadow{
+    position: relative;
+    background-color: #212529;
+    height: 100%;
+ }
+
+ .thumbnail-img{
+    position: absolute;
+    top: -8px;
+    left: 8px;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    /* box-shadow: 5px 5px 10px #000000a2; */
+ }
+
+ .event-body{
+    background-color: #eee;
+ }
+
+ .event-body p:not(.theme){
+   margin: 0;
+   font-size: 0.9em;
+ }
+
+ p.theme{
+   color: #064855;
+ }
+ .event-body i{
+   color: #064855;
+ }
+
+
+ @media screen and (max-width: 576px){
+   .event-thumbnail{
+      height: 200px;
+   }
+ }
+
+
+
+ /* EVENT VIEW */
+
+   .event-details, .registration-form {
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: .5rem;
+      padding: 20px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   }
+    .event-title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #064855;
+        margin-bottom: .5rem;
+    }
+    .event-info {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+    }
+    .event-info i {
+        margin-right: 10px;
+        color: #064855;
+    }
+    .event-info p {
+        margin: 0;
+    }
+    .registration-form h3 {
+        color: #064855;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    .no-form{
+      color: #064855;
+    }

@@ -1,0 +1,18 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/event.css') }}">
+    <script src="{{ url_for('static', filename='js/admin/event.js') }}" defer></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="content">
+            <h1>Event Registration Complete</h1>
+            <div class="action-btn">
+                <a href="add_admin.html" class="btn btn-primary">Add Event</a>
+                <a href="add_admin.html" class="btn btn-primary">View Event</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

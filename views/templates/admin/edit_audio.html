@@ -1,0 +1,81 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/audio.css') }}">
+<script src="{{ url_for('static', filename='js/admin/audio.js') }}" defer> </script>
+
+{% endblock %}
+
+
+{% block main %}
+<div class="container audio-container">
+    <div class="container audio-box rounded border shadow">
+        <h2 class="my-3 text-center">Edit Audio File</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {%  with messages = get_flashed_messages(with_categories=True) %}
+            {% for category, message in messages%}
+            {% if category == 'success'%}
+                <div class="alert alert-success flash" role="alert">
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="alert alert-danger p-1 flash" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
+
+        <div class="my-3 audio-file">
+            <label for="audio-file" class="form-label">Audio File</label>
+            <div class="file-input-container rounded">
+                <input type="file" id="audioFileInput" class="custom-file-input" accept="audio/*">
+                <span class="input-group-text"><i class="bi bi-file-earmark-music-fill"></i></span>
+                <label for="audioFileInput" class="custom-file-label">Change File</label>
+                <div id="audio-file-name" class="ms-3 file-name">{{audio['file_id']}}</div>
+            </div>
+        </div>
+        
+        <div class="my-3 audio-image">
+            <label for="audio-image" class="form-label">Audio Image</label>
+            <div class="file-input-container rounded">
+                <input type="file" id="imageFileInput" class="custom-file-input" accept="image/*">
+                <span class="input-group-text"><i class="bi bi-file-earmark-image"></i></span>
+                <label for="imageFileInput" class="custom-file-label">{{ 'Change File' if audio['image_id'] else 'choose File' }}</label>
+                <div id="image-file-name" class="ms-3 file-name">{{audio['image_id']}}</div>
+            </div>
+        </div>
+
+        <div class="my-3">
+            <label for="audio-title" class="form-label">Audio Title</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                <input type="text" class="form-control" name="audio-title" id="audio-title" value="{{audio['title']}}" required>
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="audio-artist" class="form-label">Artist(s)</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" class="form-control" name="audio-artist" id="audio-artist" value="{{audio['artist']}}">
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="audio-tags" class="form-label">Audio Tags</label>
+            <span class="info"> <small>Please seperate tags with a comma '<strong>,</strong>'</small></span>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-tags-fill"></i></span>
+                <input type="text" class="form-control" name="audio-tags" id="audio-tags" value="{{','.join(audio['tags'])}}">
+              </div>
+        </div>
+        
+        <div class="submit d-flex justify-content-center my-3">
+            <button type="submit" class="btn">Update</button>
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/audio.css') }}">
+<script src="{{ url_for('static', filename='js/admin/audio.js') }}" defer> </script>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h1 class="my-4 text-center">List Of Audio Files</h1>
+
+    {% if not audios %}
+        <p class="text-center h3 mt-5">Audio Record Empty</p>
+    {% else %}
+    <ul class="audio-list my-5 mx-auto row row-cols-lg-2 g-4">
+        {% for audio in audios %}
+                <li class="d-flex mb-3">
+                    <div class="audio-player d-flex ">
+                        <div class="play">
+                            <img class="img-fluid" src="{{ url_for('admin.download_audio_route', audio_id=audio['image_id']) if audio['image_id'] else ''}}" alt="">
+                            <i class="bi bi-play-fill play-btn"></i>
+                            <input type="hidden" name="audio-file_id" value="{{ audio['file_id'] }}" class="audio-file_id">
+                        </div>
+                        <div class="row p-2 audio-body">
+                            <div class="audio-detail">
+                                <p class="title">{{ audio["title"] }}</p>
+                                <p class="artist">{{ audio["artist"] }}</p>
+                            </div>
+                            <div class="seek d-flex align-items-center">
+                                <input type="range" name="" class="audio-progress" min="0" max="100" value="0">
+                                <!-- <div class="audio-progress">
+                                    <div class="audio-progress-bar"></div>
+                                    <div class="audio-progress-head"></div>
+                                </div>  -->
+                                <div class="timer">
+                                    <div class="curr-time d-inline-block">00:00</div>/
+                                    <div class="full-time d-inline-block">00:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions d-flex justify-content-between align-items-center p-3 flex-column">
+                        <a href="/admin/audio/edit/{{audio['_id']}}" class="edit"><i class="bi bi-pencil-square"></i></a>
+                        <a href="/admin/audio/delete/{{audio['_id']}}" class="delete"><i class="bi bi-trash3"></i></a>
+                    </div>
+                            <!-- <source src="{{ url_for('admin.download_audio_route', audio_id=audio['file_id']) }}" type="audio/mpeg"> -->
+                </li>
+        {% endfor %}     
+    </ul>
+    {% endif %}
+    <div class="addbtn">
+       <a href="/admin/audio/add"><i class="bi bi-plus-circle-fill"></i></a> 
+    </div>
+</div>
+
+{% endblock %}

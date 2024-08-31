@@ -1,0 +1,224 @@
+.addbtn{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+.addbtn i{
+    font-size: 5em;
+    color: green;
+}
+
+.audio-container{
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    min-height: 100vh;
+}
+.audio-box{
+    max-width: 822px;
+    background-color: #fff;
+    padding: 3rem 2rem;
+    color: green;
+}
+
+.audio-box form > div{
+    margin-bottom: 3rem !important;
+}
+.input-group-text{
+    background-color: gold;
+}
+.input-group-text i{
+    color: #555;
+}
+
+.submit{
+}
+.submit .btn{
+    background-color: green;
+    border-radius: 8px;
+    color: #fff;
+    width: 100%;
+
+}
+
+.submit .btn-outline{
+    border: 1px solid green;
+    background-color: transparent;
+    color: green;
+}
+
+h1{
+    color: green;
+}
+
+.audio-list{
+    /* max-width: 800px; */
+    padding: 1rem;
+
+}
+
+.audio-list > li{
+    height: 120px;
+}
+.audio-player{
+    border: 1px solid gold;
+    border-radius: 16px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.play{
+    position: relative;
+    background-color: pink;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+.play::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.445);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+.play img{
+    width: 120px;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.play-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+}
+
+.audio-body{
+    /* background-color: #fff; */
+    width: calc(100% - 120px);
+}
+
+.audio-detail p{
+    padding: 0;
+    margin: 0;
+}
+.audio-detail .title{
+    font-weight: bold;
+}
+.audio-detail .artist{
+    font-size: 0.8em;
+    color: #555;
+}
+
+.seek{
+    width: 100%;
+}
+
+.seek .timer{
+    font-size: 0.7em;
+    color: #555;
+    margin-left: 1rem;
+}
+
+.audio-list > li .actions{
+    gap: 2rem;
+    
+}
+
+.audio-list > li .actions a{
+    color: goldenrod;
+}
+
+.audio-list > li .actions a i{
+}
+
+.audio-progress{
+    height: 5px;
+}
+
+
+
+.file-input-container {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* margin-top: 50px; */
+    border: 1px solid #e7e7e7;
+    font-size: 0.8em;
+}
+
+.custom-file-input {
+    display: none;
+}
+
+.custom-file-label {
+    /* display: inline-block; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding:0 0.7rem;
+    font-size: 1em;
+    /* padding: 10px 20px; */
+    background-color: #eaeaea;
+    color: #333;
+    cursor: pointer;
+    /* border-radius: 5px; */
+    /* font-size: 16px; */
+}
+
+
+.file-name {
+    /* margin-top: 10px; */
+    /* font-size: 16px; */
+    color: #555;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .audio-progress{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+} */
+
+
+/* .audio-progress{
+    background-color: #3d3a4b;
+    width: 100%;
+    height: 0.4rem;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.audio-progress-bar{
+    position: relative;
+    height: 100%;
+    width: 0;
+    border-radius: 0.8rem;
+    background-color: #aaabf8;
+}
+
+.audio-progress-head{
+    position: absolute;
+    background-color: #eee;
+    height: 1.2rem;
+    width: 1.2rem;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -32%);
+    border-radius: 100%;
+    z-index: 2;
+    box-shadow: 0 0 0 3px #aaabf8;
+
+} */

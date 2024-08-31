@@ -1,0 +1,81 @@
+{% extends '/blog/base.html' %}
+
+{% block page_dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog/create.css') }}">
+    <script src="{{ url_for('static', filename='js/blog/base.js') }}" defer></script>
+
+    <script src="{{ url_for('static', filename='js/blog/create.js') }}" defer></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container my-5 ">
+        <div class="caption-header text-center">
+            <h1>Create Your Blog Post</h1>
+            <p>Inspire Other on God's Love His word, and the gosple</p>
+        </div>
+        <div class="container border rounded shadow-lg py-5 px-3 p-sm-5 bg-light">
+            <form action="" method="post" enctype="multipart/form-data" onsubmit="ArrangeForm()">
+                <div class="my-3">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title" required>
+                </div>
+                <div class="my-3">
+                    <label for="title">Thumbnail Image</label>
+                    <input type="file" class="form-control" name="blog-image" required>
+                </div>
+                <div class="content my-3">
+                    <p class="h3 text-center"> Content</p>
+                    <div class="content-container">
+                        <div class="content-item mb-3" id="form-model">
+                            <div class="field-container mb-1">
+                                <div class="field-item">
+                                    <textarea class="content-input form-control text form-added" placeholder="Type here..." rows="5" required></textarea>
+                                </div>
+                            </div>
+                            <div class="tools">
+                                <i class="bi bi-textarea-t" onclick="displayTextarea(this)"></i>
+                                <i class="bi bi-list-ul" onclick="displayListul(this)"></i>
+                                <i class="bi bi-list-ol" onclick="displayListol(this)"></i>
+                                <i class="bi bi-type-h1" onclick="displaySubheader(this)"></i>
+                                <i class="bi bi-file-earmark-image" onclick="displayImageForm(this)"></i>
+                                <i class="bi bi-dash-circle rmv-btn" onclick="rmvField(this)"></i>
+                                <i class="bi bi-plus-circle add-btn" onclick="addField(this)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="blog-content" id="blog-content" required>
+                <div class="submit-btn">
+                    <button type="submit" class="btn c-test">Submit</button>
+                </div>
+            </form>
+            <!-- <button class="btn btn-primary" onclick="ArrangeForm()">FAKE SUBMIT</button> -->
+            <div class="field-model d-none">
+                <div class="field-item" id="text-area">
+                    <textarea class="content-input form-control text" placeholder="Type here..." rows="5"></textarea>
+                </div>
+                <div class="field-item editor-container" id="ol">
+                    <div class="line-numbers"></div>
+                    <textarea class="content-input form-control editor ol" oninput="updateLineNumbers(this, 'ol')" onscroll="syncScroll(this)" placeholder="Type here..."  rows="5"></textarea>
+                </div>
+                <div class="field-item editor-container" id="ul">
+                    <div class="line-numbers"></div>
+                    <textarea class="content-input form-control editor ul" oninput="updateLineNumbers(this, 'ul')" onscroll="syncScroll(this)" placeholder="Type here..." rows="5"></textarea>
+                </div>
+                <div class="field-item" id="sub-header">
+                    <input class="content-input form-control sub-header" type="text" placeholder="Type here...">
+                </div>
+                <div class="field-item" id="image-form">
+                    <input class="content-input form-control image" type="file" name="" accept="image/*">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block pageScript %}
+    <script>
+        document.getElementById("blog-create-page").classList.add("active");
+    </script>
+{% endblock %}

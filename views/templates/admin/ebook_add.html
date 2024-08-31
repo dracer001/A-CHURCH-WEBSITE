@@ -1,0 +1,70 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<script src="{{ url_for('static', filename='js/admin/ebook.js') }}" defer> </script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/ebook.css') }}">
+{% endblock %}
+
+
+{% block main %}
+<div class="container ebook-container">
+    <div class="container ebook-box rounded border shadow">
+        <h2 class="my-3 text-center">Upload e-book File</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+        <div class="my-3">
+            <label for="ebook-file" class="form-label">e-Book File</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-file-pdf-fill"></i></span>
+                <input type="file" accept=".epub,.mobi,.pdf" class="form-control" name="ebook-file" id="ebook-file" required>
+              </div>
+        </div>
+        
+        <div class="my-3">
+            <label for="ebook-image" class="form-label">e-Book Image</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-file-earmark-image"></i></span>
+                <input type="file" accept="image/*" class="form-control" name="ebook-image" id="ebook-image" required>
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="ebook-title" class="form-label">e-Book Title</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                <input type="text" class="form-control" name="ebook-title" id="ebook-title" required>
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="ebook-author" class="form-label">Author(s)</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" class="form-control" name="ebook-author" id="ebook-author" required>
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="ebook-tags" class="form-label">e-Book Summary</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-chat-square-quote"></i></span>
+                <textarea class="form-control" aria-label="With textarea" name="ebook-summary" required></textarea>
+            </div>
+        </div>
+
+        <div class="my-3">
+            <label for="ebook-tags" class="form-label">e-Book Tags</label>
+            <span class="info small d-block"> <small>Please seperate tags with a comma '<strong>,</strong>'</small></span>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-tags-fill"></i></span>
+                <input type="text" class="form-control" name="ebook-tags" id="ebook-tags">
+            </div>
+        </div>
+        
+        <div class="submit d-flex justify-content-center my-3">
+            <button type="submit" class="btn">Upload</button>
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

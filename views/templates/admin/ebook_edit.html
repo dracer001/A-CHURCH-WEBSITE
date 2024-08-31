@@ -1,0 +1,88 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/ebook.css') }}">
+<script src="{{ url_for('static', filename='js/admin/ebook.js') }}" defer> </script>
+
+{% endblock %}
+
+
+{% block main %}
+<div class="container ebook-container">
+    <div class="container ebook-box rounded border shadow">
+        <h2 class="my-3 text-center">Update e-book File</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {%  with messages = get_flashed_messages(with_categories=True) %}
+            {% for category, message in messages%}
+            {% if category == 'success'%}
+                <div class="alert alert-success flash" role="alert">
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="alert alert-danger p-1 flash" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
+        <div class="my-3 ebook-file">
+            <label for="ebook-file" class="form-label">e-Book File</label>
+            <div class="file-input-container rounded">
+                <input type="file" id="ebookFileInput" class="custom-file-input" accept=".epub,.mobi,.pdf">
+                <span class="input-group-text"><i class="bi bi-file-pdf-fill"></i></span>
+                <label for="ebookFileInput" class="custom-file-label">Change File</label>
+                <div id="ebook-file-name" class="ms-3 file-name">{{ebook['file_id']}}</div>
+            </div>
+        </div>
+
+        <div class="my-3 ebook-image">
+            <label for="ebook-image" class="form-label">e-Book Image</label>
+            <div class="file-input-container rounded">
+                <input type="file" id="imageFileInput" class="custom-file-input" accept="image/*">
+                <span class="input-group-text"><i class="bi bi-file-earmark-image"></i></span>
+                <label for="imageFileInput" class="custom-file-label">Change File</label>
+                <div id="image-file-name" class="ms-3 file-name">{{ebook['image_id']}}</div>
+            </div>
+        </div>
+
+        <div class="my-3">
+            <label for="ebook-title" class="form-label">e-Book Title</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                <input type="text" class="form-control" name="title" id="ebook-title" value="{{ebook['title']}}" required>
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="ebook-author" class="form-label">Author(s)</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" class="form-control" name="author" id="ebook-author" value="{{ebook['author']}}" required>
+              </div>
+        </div>
+
+        <div class="my-3">
+            <label for="ebook-tags" class="form-label">e-Book Summary</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-chat-square-quote"></i></span>
+                <textarea class="form-control" aria-label="With textarea" name="summary" value="{{ebook['summary']}}" required>{{ebook['summary']}}</textarea>
+            </div>
+        </div>
+
+        <div class="my-3">
+            <label for="ebook-tags" class="form-label">e-Book Tags</label>
+            <span class="info small d-block"> <small>Please seperate tags with a comma '<strong>,</strong>'</small></span>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-tags-fill"></i></span>
+                <input type="text" class="form-control" name="tags" id="ebook-tags" value="{{','.join(ebook['tags'])}}">
+            </div>
+        </div>
+        
+        <div class="submit d-flex justify-content-center my-3">
+            <button type="submit" class="btn">Upload</button>
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

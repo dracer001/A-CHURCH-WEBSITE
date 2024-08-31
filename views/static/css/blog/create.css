@@ -1,0 +1,81 @@
+.tools{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.tools i{
+    font-size: 1.2em;
+    color: green;
+}
+
+.tools .rmv-btn, .tools .add-btn{
+    color: #00806f;
+}
+
+.tools i.btn-disabled{
+    color: #00806f79;
+}
+
+.editor-container {
+    display: flex;
+    /* margin: 20px auto; */
+    /* border: 1px solid #ccc; */
+    position: relative;
+    height: 134px;
+    overflow: hidden;
+}
+
+.line-numbers {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    user-select: none;
+}
+
+.line-numbers span {
+    display: block;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.editor {
+    border: none;
+    padding: 10px;
+    resize: none;
+    outline: none;
+}
+
+.editor-container {
+    overflow: hidden;
+}
+
+.editor, .line-numbers {
+    /* white-space: pre-wrap; */
+    /* overflow-wrap: break-word; */
+    overflow: auto;
+}
+
+.ol-dot{
+    /* font-size: 1.2em; */
+    font-weight: bolder;
+    padding: 0;
+    display: inline;
+}
+
+textarea{
+    resize: none;
+}
+.line-numbers::-webkit-scrollbar, textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.sub-header{
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 576px){
+    .tools{
+        gap: 1rem;
+    }
+}

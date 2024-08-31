@@ -1,0 +1,29 @@
+{% extends 'admin/base.html' %}
+
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/event.css') }}">
+
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        {% for field in form['form'] %}
+        <th scope="col">{{field['field_name']}}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+
+    <tbody>
+        {% for registerd in registration %}
+        <tr>
+            {% for field in form['form'] %}
+                <td> {{ registerd["data"][field["field_name"]] }} </td>  
+            {% endfor %}
+        </tr>          
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

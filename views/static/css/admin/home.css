@@ -1,0 +1,40 @@
+
+.tasks{
+    padding: 2rem;
+    text-align: center;
+    max-width: 860px;
+    /* border: 2px solid green; */
+
+} 
+
+.info-title{
+    font-family: "Wittgenstein", serif;
+    /* font-optical-sizing: auto; */
+    font-weight: 500;
+    font-size: 2.0em;
+    color: green;
+}
+
+.info-text{
+    font-family: "Open Sans", sans-serif;
+}
+
+.info-text a{
+    color: goldenrod;
+}
+
+.blogger-reg{
+    font-size: 1.2em;
+    background-color: green;
+    border: green;
+    /* color: goldenrod; */
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px black;
+}
+
+.blogger-reg:hover, .blogger-reg:active, .blogger-reg:visited{
+    background-color: darkgreen;
+    /* box-shadow: none;
+    transform: translateY(3px); */
+}

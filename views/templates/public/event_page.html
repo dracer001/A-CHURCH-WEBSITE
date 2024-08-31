@@ -1,0 +1,96 @@
+{% extends '/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/public/event.css') }}">
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-lg-8">
+            <div class="event-details">
+                <img src="{{ url_for('admin.download_event_route', event_id=event['flyer_id'])}}" alt="Event flyer image" class="img-fluid rounded mb-3">
+                <h2 class="event-title">Music Concert</h2>
+                <div class="event-info">
+                    <i class="bi bi-bookmark"></i>
+                    <p>Theme: {{event["title"]}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-calendar-event"></i>
+                    <p>Date: {{event["date"] | format_date}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-clock"></i>
+                    <p>Time: {{event["time"]}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-geo-alt"></i>
+                    <p>Location: {{event["location"]}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-people"></i>
+                    <p>Organizers: {{event["organizers"]}}</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-telephone"></i>
+                    <p>Contact Info: contact@xyzevents.com, (123) 456-7890</p>
+                </div>
+                <div class="event-info">
+                    <i class="bi bi-info-circle"></i>
+                    <p>About the Event: {{event["event_info"]}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            {% if form %}
+            <div class="sticky-top">
+                <div class="registration-form " id="register">
+                    <h3 class="text-center mb-4">Register for the Event</h3>
+                    <form action="/admin/event/register/", method="post">
+                        {% for field in form['form'] %}
+                        <div class="form-group mb-3">
+                            <label for="{{field['field_name']}}">{{field["field_name"]}}</label>
+                            {% if field['field_type'] == 'textarea' %}
+                            <textarea class="form-control" name="{{field['field_name']}}" rows="3" required></textarea>
+            
+                            {% elif field['field_type'] == 'radio'%}
+                                <div class="my-3">
+                                {% for option in field['options'] %}
+                                <input type="{{field['field_type']}}" class="form-check-input" name="{{field['field_name']}}" id="{{field['field_name']}}" value="{{option}}">      
+                                <label for="{{field['field_name']}}">{{option}}</label>
+                                {% endfor %}
+                                </div>
+                            {% elif field['field_type'] == 'checkbox'  %}
+                                <div class="my-3">
+                                {% for option in field['options'] %}
+                                    <input type="{{field['field_type']}}" class="form-check-input" name="{{field['field_name']}}-{{option}}" id="{{field['field_name']}}" value="{{option}}">      
+                                    <label for="{{field['field_name']}}">{{option}}</label>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                            <input type="{{field['field_type']}}" class="form-control" name="{{field['field_name']}}" id="{{field['field_name']}}" required>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <input type="hidden" name="form_id" value="{{form['_id']}}">
+                        <input type="hidden" name="event_id" value="{{event['_id']}}">
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+
+                </div>
+            </div>
+            {% else %}
+                <h2 class="text-center no-form"> This event Has No Form</h2>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block pageScript %}
+    <script>
+        document.getElementById("event-page").classList.add("active")
+    </script>
+{% endblock %}

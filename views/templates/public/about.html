@@ -1,0 +1,158 @@
+{% extends '/base.html' %}
+
+{% block dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/public/about.css') }}">
+
+{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <img class="hero-img" src="{{ url_for('static', filename='media/images/church-img.jpg')}}" alt="">
+    <div class="hero-content">
+        <p class=" display-3">UBCMx</p>
+        <p class="display-7">A purpose driving, descipleship and healing center</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="service bg-dark text-white py-3">
+    <P class="title h2 display-5 text-center">Service Time</P>
+    <div class="service-shedule d-flex justify-content-evenly text-center mt-3">
+        <div class="shedule-item p-2">
+            <p class="name">Sunday School</p>
+            <p class="day">Sundays</p>
+            <p class="time">9:00 AM</p>
+        </div>
+        <div class="vr"></div>
+        <div class="shedule-item p-2">
+            <p class="name">Sunday Service</p>
+            <p class="day">Sunday</p>
+            <p class="time">9:00 AM</p>
+        </div>
+        <div class="vr"></div>
+        <div class="shedule-item p-2">
+            <p class="name">Triumphant Hour</p>
+            <p class="day">Wenessday</p>
+            <p class="time">5:00 PM</p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <section class="statement my-5 row row-cols-1 row-cols-md-2 g-4">
+        <div class="statement-item col">
+            <div class="card text-dark bg-light mb-3 h-100 shadow">
+                <div class="card-header">Mission</div>
+                <div class="card-body">
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo temporibus incidunt laudantium reiciendis recusandae praesentium dolorum voluptas, tempore blanditiis suscipit modi mollitia delectus asperiores assumenda commodi cumque itaque iste eligendi pariatur natus deleniti tenetur! Ratione distinctio, esse incidunt nostrum vero non saepe quo maxime veniam atque quasi nulla quod. Sunt?</p>
+                </div>
+            </div>
+        </div>
+        <div class="statement-item col">
+            <div class="card text-dark bg-light mb-3 h-100 shadow">
+                <div class="card-header">Vision</div>
+                <div class="card-body">
+                  <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident reprehenderit non, inventore eveniet recusandae aperiam labore fugit itaque eaque possimus? Accusantium est quod blanditiis ea, quas quisquam omnis ex amet harum quae voluptatem et voluptas velit enim, atque corrupti consequatur ad, nostrum molestiae maxime tenetur impedit voluptatum fuga. Iste, sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis veritatis numquam eveniet enim ipsum voluptatum expedita obcaecati in, odio eaque?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="my-5 ministries shadow px-3 px-md-5 py-5">
+        <h2 class="text-center mb-3 text-white">The Church Ministries</h2>
+        <div class="ministries-container row row-cols-md-3 g-4">
+            <div class="ministry">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <p class="card-title fw-bold">GOST Confrence</p>
+                        <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima inventore est amet, illo sed id quo necessitatibus consequuntur cupiditate illum.</p>
+                        <a href="" class="btn read-more"><span>Learn more</span> <i class="ms-1 bi bi-arrow-right-circle"></i></a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ministry">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <p class="card-title fw-bold">GOST Confrence</p>
+                        <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima inventore est amet, illo sed id quo necessitatibus consequuntur cupiditate illum.</p>
+                        <a href="" class="btn read-more">Learn more <i class="ms-1 bi bi-arrow-right-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="ministry">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <p class="card-title fw-bold">GOST Confrence</p>
+                        <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima inventore est amet, illo sed id quo necessitatibus consequuntur cupiditate illum.</p>
+                        <a href="" class="btn read-more">Learn more <i class="ms-1 bi bi-arrow-right-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="row justify-content-between pb-5 py-3 py-lg-5 px-lg-5 px-3 shadow-lg border rounded-3 my-5 align-items-center gx-3 gy-5 gy-lg-0">
+        <div class="pst-msg col-lg-7">
+            <h2>From the desk of the pastor</h2>
+            <p class="msg">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor repudiandae nesciunt ratione ipsa, ipsum ullam maiores consequatur eveniet dolorem pariatur, temporibus beatae alias? Dolore veniam ipsam ea blanditiis sit animi.
+                Fuga facere deserunt expedita fugit totam tempore in tempora? Eveniet eum ducimus quos, delectus adipisci vero quia mollitia! Vitae asperiores repudiandae dolore reprehenderit dolorem nulla nesciunt eum consectetur excepturi perspiciatis?
+            </p>
+            <div class="pst-profile">
+                <img src="{{ url_for('static', filename='/media/images/hero2.jpg') }}" alt="" class="pst-img">
+                <div class="about-group">
+                    <p class="pst-name">Jonathan Gondyl Daniel</p>
+                    <p class="pst-about">Founder, EarthLink Institute</p>
+                </div>
+            </div>
+        </div>
+        <div class="book-session col-lg-4" id="book-session">
+            <h3 class="">Book a counseling session</h3>
+            <form action="/book-counseling" class="border py-3 px-3" method="post">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="full-name-icon"><i class="bi bi-person-bounding-box"></i></span>
+                    <input type="text" class="form-control" name="full-name" placeholder="Full Name" aria-label="full-name" aria-describedby="full-name-icon" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="email-icon"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" class="form-control" name="email" placeholder="email" aria-label="email" aria-describedby="email-icon" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="date-icon"><i class="bi bi-calendar-event-fill"></i></span>
+                    <input type="date" class="form-control" name="date" placeholder="date" aria-label="date" aria-describedby="date-icon" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="category-icon"><i class="bi bi-bookmark-plus-fill"></i></span>
+                    <input list="councseling-type" type="text" class="form-control" name="category" placeholder="counseling type" aria-label="Username" aria-describedby="category-icon" required>
+                    <datalist id="councseling-type">
+                        <option value="Marriage">
+                        <option value="Healing">
+                        <option value="Diliverance">
+                        <option value="Financial">
+                    </datalist>
+                </div>
+                <button class="btn c-test">Book Now</button>
+            </form>
+        </div>
+    </section>
+    <section class="partnership shadow">
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold">Partner With Us</h1>
+            <div class="col-lg-6 mx-auto">
+              <p class="lead mb-4">Be Part of the advancement of Gods kingdom as you partner with us. With variuse ministries under UBC you can choose one to be commited to</p>
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn c-test btn-lg px-4 gap-3">Partner</button>
+              </div>
+            </div>
+          </div>
+    </section>
+</div>
+
+{% endblock %}
+
+
+{% block pageScript %}
+    <script>
+        document.getElementById("about-page").classList.add("active")
+    </script>
+{% endblock %}

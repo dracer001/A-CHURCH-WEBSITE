@@ -1,0 +1,93 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wdth,wght@75..100,300..800&family=Wittgenstein:wght@400..900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wdth,wght@75..100,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Wittgenstein:wght@400..900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wdth,wght@75..100,300..800&family=Quicksand:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Wittgenstein:wght@400..900&display=swap');
+
+
+.logo-text{
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3em;
+}
+
+.btn-bg{
+    background-color: #202B31;
+    border-color: #202B31;
+    color: #fff;
+}
+.btn-bg:hover{
+    background-color: #212529;
+    border-color: #212529;
+    color: #fff;
+}
+
+.btn-bg-outline{
+    color: #212529;
+    border: 1px solid #212529;
+}
+
+.btn-bg-outline:hover{
+    background-color: #212529;
+    border-color: #212529;
+    color: #fff;
+}
+
+.navbar-nav{
+    column-gap: 1rem;
+}
+
+.btn-outline-info{
+    color: #0dcaf0 ;
+}
+
+.c-test{
+    background-color: #064855;
+    border-color: #064855;
+    color: #fff;
+}
+
+.c-test-outline{
+    background-color: transparent;
+    border-color: #064855;
+    color: #064855;
+}
+.c-test-outline:hover{
+    background-color: #064855;
+    border-color: #064855;
+    color: #fff;
+}
+.contact-detail i{
+    color: #0a6172;
+    font-size: 1.15em;
+}
+
+.contact-detail a{
+    color: #0dcaf0;
+    text-decoration: none;
+}
+
+.socials a{
+    color: #0dcaf0;
+    font-size: 1.35em;
+}
+
+
+@media screen and (max-width: 768px) {
+    .logo-text{
+        font-size: 1.0em;
+        /* color: #fff; */
+      }
+
+    .btn-lg{
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+      }
+       
+}
+
+.alert{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 200;
+ }

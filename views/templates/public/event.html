@@ -1,0 +1,86 @@
+{% extends '/base.html' %}
+
+{% block dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/public/event.css') }}">
+    <script src="{{ url_for('static', filename='/js/public/event.js') }}" defer></script>
+{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <img class="hero-img" src="{{ url_for('static', filename='media/images/flyer.jpg')}}" alt="">
+    <div class="hero-content">
+        <p class="h1">The living Water</p>
+        <p class=""> <i class="bi bi-geo-alt"></i>  UBCMx Gidan-Kwano Minna</p>
+        <p class="">5th july, 2017 <span> 8:00 AM</span></p>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block main %}
+{% if not events %}
+  <div class="container my-5">
+    <h2 class="text-center display-4">Opps! Sorry no EVENT avalilable</h2>
+  </div>
+
+{% else %}
+    <div class="query px-3 px-lg-5 py-3 sticky-top">
+        <form action="" class="d-flex align-items-center justify-content-end sort-form">
+            <div class="order">
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="order" {{'checked' if order=='on' else ''}}>
+                <label class="form-check-label" for="flexSwitchCheckChecked"><i class="bi bi-arrow-down-up"></i></label>
+                </div>
+                
+            </div>
+            <div class="sort d-flex align-items-center">
+                <select class="form-select form-select-sm" id="query-field-select" name="field">
+                    <option value="datetime" {{'selected' if sort=='datetime' else ''}}>date</option>
+                    <option value="a-z" {{'selected' if sort=='a-z' else ''}}>A-Z</option>
+                </select>
+            </div>
+            <div class="search d-flex">
+                <input value="{{query}}" class="form-control form-control-sm me-2" type="date" placeholder="Search" aria-label="Search" id="query-field" name="query">
+                <button class="btn btn-sm btn-outline" type="submit" id="search-btn" name="search" value="true">Search</button>
+            </div>
+            <input type="hidden" name="id" value="{{id}}">
+        </form>
+    </div>
+
+<div class="container">
+    <div class="event-container row row-cols-lg-2 row-cols-1 justify-content-sm-between">
+        {% for event in events %}
+        <div class="event-item row my-3">
+            <div class="event-thumbnail col-12 col-sm-4">
+                <div class="thumbnail-shadow">
+                    <img src="{{ url_for('admin.download_event_route', event_id=event['flyer_id'])}}" alt="" class=" thumbnail-img">
+                </div>
+            </div>
+            <div class="border shadow-sm p-3 ms-2 event-body col-12 col-sm-7">
+                <p class="theme h4 mb-3">{{event['title']}}</p>
+                {{event['date']}}
+                <p class="date text-muted font-monospace"><i class="bi bi-calendar-event"></i> {{ event['date'] | format_date }}</p>
+                <p class="time text-muted font-monospace"><i class="bi bi-clock"></i> {{event['time']}}</p>
+                <p class="loc mb-3 text-muted font-monospace"><i class="bi bi-geo-alt"></i> {{event['location']}}</p>
+                <a class="btn btn-sm c-test" href="/event/{{event['_id']}}">View</a>
+                {% if event['form_id'] %}
+                    <a href="/event/{{event['_id']}}#register" class="btn btn-sm c-test-outline">Register</a>
+                    
+                {% endif %}
+            </div>
+        </div>      
+        {% else %}
+            
+        {% endfor %}
+
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+
+{% block pageScript %}
+    <script>
+        document.getElementById("event-page").classList.add("active")
+    </script>
+{% endblock %}

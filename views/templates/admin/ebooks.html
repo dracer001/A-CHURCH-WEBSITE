@@ -1,0 +1,93 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/ebook.css') }}">
+<script src="{{ url_for('static', filename='js/admin/ebook.js') }}" defer> </script>
+<style>
+    body {
+        background-color: #f8f9fa;
+        /* padding-top: 20px; */
+    }
+    .card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Ensure all cards have the same height */
+    }
+    .card img {
+        height: 250px;
+        object-fit: cover;
+    }
+    .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card-subtitle {
+        font-size: 1rem;
+        color: #6c757d;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card-text {
+        flex-grow: 1;
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .btn-group {
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn {
+        width: 32%;
+    }
+</style>
+
+
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h1 class="text-center my-5">eBook Library</h1>
+    {% if not ebooks %}
+    <p class="text-center h3 mt-5">e-Book Record Empty</p>
+    {% else %}
+    <div class="row" id="ebook-list">
+        {% for ebook in ebooks %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ url_for('admin.download_ebook_route', ebook_id=ebook['image_id']) if ebook['image_id'] else ''}}" class="card-img-top" alt="Cover image of Understanding Masturbation">
+                <div class="card-body">
+                    <h5 class="card-title">{{ ebook['title']}}</h5>
+                    <h6 class="card-subtitle mb-2">{{ ebook['author']}}</h6>
+                    <p class="card-text">{{ ebook['summary']}}</p>
+                    <div class="btn-group">
+                        <a href="{{ url_for('admin.download_ebook_route', ebook_id=ebook['file_id'])}}" class="btn btn-success" download><i class="bi bi-download"></i> Download</a>
+                        <a href="/admin/e-book/edit/{{ebook['_id']}}" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
+                        <a href="/admin/e-book/delete/{{ebook['_id']}}" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}   
+    </div>
+    {% endif %}
+    <div class="addbtn">
+       <a href="/admin/e-book/add"><i class="bi bi-plus-circle-fill"></i></a> 
+    </div>
+</div>
+
+{% endblock %}

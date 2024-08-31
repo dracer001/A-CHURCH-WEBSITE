@@ -1,0 +1,47 @@
+{% extends '/base.html' %}
+
+{% block dependencies %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/blog/base.css') }}">
+    <script src="{{ url_for('static', filename='js/blog/base.js') }}" defer></script>
+    {% block page_dependencies %}{% endblock %}
+{% endblock %}
+
+{% block blogger_nav %}
+<div class="blogger-nav-container py-2 px-3 border shadow">
+    {% if user %}
+    <div class="d-flex justify-content-between flex-wrap">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/blog" id="blog-view-page">Blogs</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/blog/create" id="blog-create-page">Create Blog</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="my-blog-space" id="blogger-space-page">Blog Space</a>
+            </li>
+        </ul>
+        <div class="d-flex align-items-center">
+
+
+            <div class="flex-shrink-0 dropdown">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{{ url_for('blog.blog_image_download', image_id=user['image_id']  ) if user['image_id'] else url_for('static', filename='media/icons/profile.png') }}" alt="blog image" width="32" height="32" class="rounded-circle">  
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                <li><a class="dropdown-item" href="/blog/profile/{{user['_id']}}">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/blog/sign-out">Sign out</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="action-btns d-flex justify-content-end">
+        <a href="/blog/sign-in" class="btn c-test btn-sm">Sign In <i class="bi bi-box-arrow-in-right"></i></a>
+        <a href="/blog/register" class="btn c-test-outline btn-sm">Sign Up</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'admin/base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/admin-edit.css') }}">
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h2 class="my-4 text-center">List Of Admin Users</h2>
+    <ul class="admin-list my-5">
+        {% for admin in admins %}
+            {% if admin['barn'] %}
+                <li class="barn"> <span class="name"><i class="bi bi-x-octagon-fill"></i> {{admin['username']}}</span>
+                    <a href="/admin/super/unbarn-admin/{{admin['_id']}}" data-bs-toggle="tooltip" data-bs-placement="top" title="barn admin user">
+                        unbarn <i class="bi bi-unlock"></i>
+                    </a>
+                </li>
+            {%  else %}
+                <li class="not-barn"> <span class="name"><i class="bi bi-check2-circle"></i> {{admin['username']}}</span>    
+                    <a href="/admin/super/barn-admin/{{admin['_id']}}" data-bs-toggle="tooltip" data-bs-placement="top" title="barn admin user">
+                        barn <i class="bi bi-lock"></i>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}     
+    </ul>
+    <div class="addbtn">
+       <a href="/admin/super/add-admin"><i class="bi bi-plus-circle-fill"></i></a> 
+    </div>
+</div>
+
+{% endblock %}

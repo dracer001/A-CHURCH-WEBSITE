@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block dependencies %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/public/ebook.css') }}">
+{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <img class="hero-img" src="{{ url_for('static', filename='media/images/hero0.jpg')}}" alt="">
+    <div class="hero-content">
+        <p class="h1">The living Water</p>
+        <div class="hero-btns">
+            <a href="#" class="btn btn-lg c-test" download><i class="bi bi-download"></i> Download</a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="query px-3 px-lg-5 py-3 sticky-top">
+    <form action="" class="d-flex align-items-center justify-content-end sort-form">
+        <div class="order">
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="order" {{'checked' if order=='on' else ''}}>
+            <label class="form-check-label" for="flexSwitchCheckChecked"><i class="bi bi-arrow-down-up"></i></label>
+            </div>
+            
+        </div>
+        <div class="sort d-flex align-items-center">
+            <select class="form-select form-select-sm" id="query-field-select" name="field">
+                <option value="title" {{'selected' if sort=='title' else ''}}>Book title</option>
+                <option value="sort" {{'selected' if sort=='author' else ''}}>Author</option>
+                <option value="most downloaded" {{'selected' if sort=='most downloaded' else ''}}>most downloaded</option>
+            </select>
+        </div>
+        <div class="search d-flex">
+            <input value="{{query}}" class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" id="query-field" name="query">
+            <button class="btn btn-sm btn-outline" type="submit" id="search-btn" name="search" value="true">Search</button>
+        </div>
+        <input type="hidden" name="id" value="{{id}}">
+    </form>
+</div>
+
+<div class="container my-5">
+    {% if not ebooks %}
+    <p class="text-center h3 mt-5">e-Book Record Empty</p>
+    {% else %}
+    <div class="row" id="ebook-list">
+        {% for ebook in ebooks %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <img src="{{ url_for('admin.download_ebook_route', ebook_id=ebook['image_id']) if ebook['image_id'] else ''}}" class="card-img-top" alt="Cover image of Understanding Masturbation">
+                <div class="card-body">
+                    <h5 class="card-title">{{ ebook['title']}}</h5>
+                    <h6 class="card-subtitle mb-2">{{ ebook['author']}}</h6>
+                    <p class="card-text">{{ ebook['summary']}}</p>
+                    <div class="btn-group">
+                        <a href="{{ url_for('admin.download_ebook_route', ebook_id=ebook['file_id'])}}" class="btn c-test-outline" download><i class="bi bi-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}   
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+
+{% block pageScript %}
+    <script>
+        document.getElementById("resources-page").classList.add("active")
+        document.getElementById("ebook-page").classList.add("active")
+    </script>
+{% endblock %}

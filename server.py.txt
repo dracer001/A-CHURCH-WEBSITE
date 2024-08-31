@@ -1,0 +1,37 @@
+from flask import Flask, g
+from models.config import getDB
+
+
+from controllers import public
+
+from routes import api, admin
+
+# Create the Flask app using the create_app function from app/__init__.py
+app = Flask(__name__, template_folder='views/templates', static_folder='views/static')
+
+with app.app_context():
+    getDB()
+
+app.register_blueprint(api.api)
+app.register_blueprint(admin.admin)
+
+@app.route('/')
+def index_route():
+    return public.index()
+
+@app.route('/about')
+def about_route():
+    return public.about()
+
+@app.route('/events')
+def event_route():
+    return public.event()
+
+
+# if __name__ == '__main__':
+#     # Run the Flask app with the appropriate environment settings
+#     app.run()
+
+
+# #### USE TO RUN SEVRE FOR DEVELOPMENT #### #
+# flask --app server run --host=0.0.0.0 --debug
